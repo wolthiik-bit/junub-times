@@ -28,15 +28,111 @@ posts_db: List[Dict] = []
 
 # ============== NEWS SOURCES ==============
 RSS_SOURCES = [
-    ("Google News - South Sudan", "https://news.google.com/rss/search?q=South+Sudan&hl=en&gl=US&ceid=US:en"),
+    # ===== SOUTH SUDAN SPECIFIC =====
+    ("Google News - South Sudan", "https://news.google.com/rss/search?q=%22South+Sudan%22&hl=en&gl=US&ceid=US:en"),
     ("Google News - Juba", "https://news.google.com/rss/search?q=Juba+South+Sudan&hl=en&gl=US&ceid=US:en"),
-    ("UN News Africa", "https://news.un.org/feed/subscribe/en/news/region/africa/feed/rss.xml"),
-    ("AllAfrica South Sudan", "https://allafrica.com/tools/headlines/rdf/southsudan/headlines.rdf"),
+    ("Google News - Salva Kiir", "https://news.google.com/rss/search?q=%22Salva+Kiir%22&hl=en&gl=US&ceid=US:en"),
+    ("Google News - Riek Machar", "https://news.google.com/rss/search?q=%22Riek+Machar%22&hl=en&gl=US&ceid=US:en"),
+    ("Google News - UNMISS", "https://news.google.com/rss/search?q=UNMISS+South+Sudan&hl=en&gl=US&ceid=US:en"),
+    ("Google News - South Sudan Oil", "https://news.google.com/rss/search?q=South+Sudan+oil&hl=en&gl=US&ceid=US:en"),
+    ("Google News - South Sudan Peace", "https://news.google.com/rss/search?q=South+Sudan+peace&hl=en&gl=US&ceid=US:en"),
+    ("Google News - South Sudan Refugees", "https://news.google.com/rss/search?q=South+Sudan+refugees&hl=en&gl=US&ceid=US:en"),
+    
+    # ===== SUDAN & NEIGHBORS =====
+    ("Google News - Sudan", "https://news.google.com/rss/search?q=Sudan+NOT+%22South+Sudan%22&hl=en&gl=US&ceid=US:en"),
+    ("Google News - Khartoum", "https://news.google.com/rss/search?q=Khartoum&hl=en&gl=US&ceid=US:en"),
+    ("Google News - Sudan War", "https://news.google.com/rss/search?q=Sudan+war+conflict&hl=en&gl=US&ceid=US:en"),
+    ("Google News - Abyei", "https://news.google.com/rss/search?q=Abyei&hl=en&gl=US&ceid=US:en"),
+    
+    # ===== EAST AFRICA REGIONAL =====
+    ("Google News - East Africa", "https://news.google.com/rss/search?q=%22East+Africa%22&hl=en&gl=US&ceid=US:en"),
+    ("Google News - IGAD", "https://news.google.com/rss/search?q=IGAD&hl=en&gl=US&ceid=US:en"),
+    ("Google News - EAC", "https://news.google.com/rss/search?q=%22East+African+Community%22&hl=en&gl=US&ceid=US:en"),
+    ("Google News - Kenya", "https://news.google.com/rss/search?q=Kenya&hl=en&gl=US&ceid=US:en"),
+    ("Google News - Uganda", "https://news.google.com/rss/search?q=Uganda&hl=en&gl=US&ceid=US:en"),
+    ("Google News - Ethiopia", "https://news.google.com/rss/search?q=Ethiopia&hl=en&gl=US&ceid=US:en"),
+    ("Google News - Addis Ababa", "https://news.google.com/rss/search?q=%22Addis+Ababa%22&hl=en&gl=US&ceid=US:en"),
+    ("Google News - Somalia", "https://news.google.com/rss/search?q=Somalia&hl=en&gl=US&ceid=US:en"),
+    ("Google News - DR Congo", "https://news.google.com/rss/search?q=%22DR+Congo%22+OR+%22DRC%22&hl=en&gl=US&ceid=US:en"),
+    ("Google News - Rwanda", "https://news.google.com/rss/search?q=Rwanda&hl=en&gl=US&ceid=US:en"),
+    ("Google News - Burundi", "https://news.google.com/rss/search?q=Burundi&hl=en&gl=US&ceid=US:en"),
+    ("Google News - Tanzania", "https://news.google.com/rss/search?q=Tanzania&hl=en&gl=US&ceid=US:en"),
+    
+    # ===== AFRICAN UNION & CONTINENTAL =====
+    ("Google News - African Union", "https://news.google.com/rss/search?q=%22African+Union%22&hl=en&gl=US&ceid=US:en"),
+    ("Google News - AU Peace Security", "https://news.google.com/rss/search?q=%22African+Union%22+peace+security&hl=en&gl=US&ceid=US:en"),
+    
+    # ===== UN & HUMANITARIAN =====
+    ("UN News - Africa", "https://news.un.org/feed/subscribe/en/news/region/africa/feed/rss.xml"),
+    ("UN News - Peace", "https://news.un.org/feed/subscribe/en/news/topic/peace-and-security/feed/rss.xml"),
+    ("UN News - Humanitarian", "https://news.un.org/feed/subscribe/en/news/topic/humanitarian-aid/feed/rss.xml"),
+    ("ReliefWeb - South Sudan", "https://reliefweb.int/updates/rss.xml?country=219"),
+    ("ReliefWeb - Sudan", "https://reliefweb.int/updates/rss.xml?country=214"),
+    ("ReliefWeb - East Africa", "https://reliefweb.int/updates/rss.xml?country=503"),
+    ("UNHCR News", "https://www.unhcr.org/rss/news.xml"),
+    ("WFP News", "https://www.wfp.org/rss.xml"),
+    
+    # ===== MAJOR AFRICA NEWS OUTLETS =====
+    ("AllAfrica - South Sudan", "https://allafrica.com/tools/headlines/rdf/southsudan/headlines.rdf"),
+    ("AllAfrica - Sudan", "https://allafrica.com/tools/headlines/rdf/sudan/headlines.rdf"),
+    ("AllAfrica - East Africa", "https://allafrica.com/tools/headlines/rdf/eastafrica/headlines.rdf"),
+    ("AllAfrica - Kenya", "https://allafrica.com/tools/headlines/rdf/kenya/headlines.rdf"),
+    ("AllAfrica - Uganda", "https://allafrica.com/tools/headlines/rdf/uganda/headlines.rdf"),
+    ("AllAfrica - Ethiopia", "https://allafrica.com/tools/headlines/rdf/ethiopia/headlines.rdf"),
+    
+    # ===== INTERNATIONAL COVERAGE =====
+    ("Google News - Africa BBC", "https://news.google.com/rss/search?q=Africa+site:bbc.com&hl=en&gl=US&ceid=US:en"),
+    ("Google News - Africa Reuters", "https://news.google.com/rss/search?q=Africa+site:reuters.com&hl=en&gl=US&ceid=US:en"),
+    ("Google News - Africa Aljazeera", "https://news.google.com/rss/search?q=Africa+site:aljazeera.com&hl=en&gl=US&ceid=US:en"),
+    ("Google News - Africa France24", "https://news.google.com/rss/search?q=Africa+site:france24.com&hl=en&gl=US&ceid=US:en"),
+    ("Google News - Africa VOA", "https://news.google.com/rss/search?q=Africa+site:voanews.com&hl=en&gl=US&ceid=US:en"),
+    
+    # ===== ECONOMY & DEVELOPMENT =====
+    ("Google News - Africa Economy", "https://news.google.com/rss/search?q=Africa+economy+development&hl=en&gl=US&ceid=US:en"),
+    ("Google News - Nile River", "https://news.google.com/rss/search?q=%22Nile+River%22+OR+%22Blue+Nile%22+OR+%22White+Nile%22&hl=en&gl=US&ceid=US:en"),
+    ("Google News - GERD Dam", "https://news.google.com/rss/search?q=GERD+Ethiopia+dam&hl=en&gl=US&ceid=US:en"),
+    
+    # ===== SPORTS =====
+    ("Google News - Africa Football", "https://news.google.com/rss/search?q=Africa+football+soccer&hl=en&gl=US&ceid=US:en"),
+    ("Google News - AFCON", "https://news.google.com/rss/search?q=AFCON+%22Africa+Cup%22&hl=en&gl=US&ceid=US:en"),
 ]
 
+# ============== RELEVANCE KEYWORDS ==============
 KEYWORDS = [
-    "south sudan", "juba", "splm", "salva kiir", "riek machar", "unmiss",
-    "upper nile", "equatoria", "bahr el ghazal", "igad", "east africa"
+    # South Sudan - Highest Priority
+    "south sudan", "juba", "junub", "splm", "spla", 
+    "salva kiir", "riek machar", "taban deng", "rebecca nyandeng",
+    "unmiss", "r-arcss", "revitalized agreement",
+    
+    # South Sudan Regions & Cities
+    "upper nile", "unity state", "jonglei", "warrap", "lakes state",
+    "western equatoria", "eastern equatoria", "central equatoria",
+    "western bahr el ghazal", "northern bahr el ghazal",
+    "wau", "malakal", "bentiu", "bor", "yei", "nimule", "torit",
+    "renk", "aweil", "kuajok", "rumbek", "yambio", "kapoeta",
+    
+    # Sudan & Border
+    "sudan", "khartoum", "abyei", "heglig", "rsf", "rapid support forces",
+    "abdel fattah al-burhan", "hemeti", "darfur", "blue nile state",
+    
+    # East Africa Countries
+    "kenya", "nairobi", "uganda", "kampala", "ethiopia", "addis ababa",
+    "somalia", "mogadishu", "eritrea", "asmara", "djibouti",
+    "tanzania", "dar es salaam", "rwanda", "kigali", 
+    "burundi", "bujumbura", "dr congo", "drc", "kinshasa",
+    
+    # Regional Organizations
+    "igad", "east african community", "eac", "african union", "au",
+    "comesa", "continental free trade",
+    
+    # Key Topics
+    "refugee", "humanitarian", "famine", "hunger", "food crisis",
+    "peace agreement", "ceasefire", "conflict", "civil war",
+    "oil production", "petroleum", "pipeline",
+    "nile", "white nile", "blue nile", "gerd", "dam",
+    "election", "constitution", "government",
+    "flood", "drought", "climate", "agriculture",
+    "cholera", "malaria", "health crisis",
 ]
 
 # ============== HELPER FUNCTIONS ==============
